@@ -1,0 +1,7 @@
+.subtitle {
+  @include container;
+  font-family: var(--montserrat-font);
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}

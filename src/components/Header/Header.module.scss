@@ -1,0 +1,28 @@
+.wrapper {
+  background: blue;
+  background: var(--header-gradient);
+  margin-bottom: 40px;
+}
+
+.innerWrapper {
+  @include container;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--open-sans-font);
+
+  &:last-child {
+    svg {
+      min-width: 26px;
+      min-height: 26px;
+    }
+  }
+}
