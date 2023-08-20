@@ -9,15 +9,23 @@ import 'dayjs/locale/ru';
 import EyeIcon from '@/src/components/UI/Icons/EyeIcon';
 import {Image} from 'antd';
 import {useTranslations} from 'next-intl';
+import {useState} from 'react';
+import errorImage from '../../../public/images/error-image.png';
+import {StaticImageData} from 'next/image';
 
 dayjs.locale('ru');
 
 interface IProps {
-  article: IArticle
+  article: IArticle;
+  lang: string;
 }
 
-export default function ArticleDetails({article}: IProps) {
+export default function ArticleDetails({article, lang}: IProps) {
+  const [src, setSrc] = useState<string>(article.image_big || errorImage.src);
+
   const t = useTranslations('NewsPage');
+
+  console.log('article:', article);
 
   return (
     <div className={s.wrapper}>
@@ -25,16 +33,29 @@ export default function ArticleDetails({article}: IProps) {
         <div className={s.imageWrapper}>
           <Image
             className={s.image}
-            src={article.image_big}
+            src={src}
             preview={{
-              mask: <span className={s.previewText}>Просмотр</span>
+              mask: <span className={s.previewText}>{t('previewText')}</span>
             }}
             alt='Иллюстрация новости'
+            onError={(e) => {
+              if (e.currentTarget.src !== errorImage.src) {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = errorImage.src;
+              }
+            }}
           />
+
         </div>
         <div className={s.infoWrapper}>
           <div className={s.dateWrapper}>
-            <span className={s.date}>{dayjs(article.creation_date).format('DD MMMM YYYY')}</span>
+            <span className={s.date}>
+              {lang === 'ru' ? (
+                dayjs(article.creation_date).format('DD MMMM YYYY')
+              ) : (
+                dayjs(article.creation_date).format('DD/MM/YYYY')
+              )}
+            </span>
             <div className={s.views}>
               <EyeIcon/>
               {article.view_count}
@@ -45,7 +66,8 @@ export default function ArticleDetails({article}: IProps) {
             <li
               style={{
                 background: article.parent_category.color,
-                boxShadow: `0 8px 10px 0 ${article.parent_category.color}`}}
+                boxShadow: `0 8px 10px 0 ${article.parent_category.color}`
+              }}
               className={s.item}
             >
               {article.parent_category.category_title}
@@ -53,7 +75,8 @@ export default function ArticleDetails({article}: IProps) {
             <li
               style={{
                 background: article.category.color,
-                boxShadow: `0 8px 10px 0 ${article.category.color}`}}
+                boxShadow: `0 8px 10px 0 ${article.category.color}`
+              }}
               className={s.item}
             >
               {article.category.category_title}

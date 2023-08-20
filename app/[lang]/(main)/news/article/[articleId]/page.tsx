@@ -8,6 +8,7 @@ import {useTranslations} from 'next-intl';
 
 export default function Page(props: any) {
   const articleId = props.params.articleId;
+  console.log('props:', props);
   const t = useTranslations('NewsPage');
 
   const allArticles = useAppSelector((store) => store.newsData.articles);
@@ -25,6 +26,7 @@ export default function Page(props: any) {
       </div>
       <ArticleDetails
         article={currentArticle[0]}
+        lang={props.params.lang}
       />
     </>
   );

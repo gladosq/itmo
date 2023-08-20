@@ -1,18 +1,16 @@
 'use client';
 
 import s from './NewsList.module.scss';
-import Image from 'next/image';
-import placeholder from './../../../public/images/placeholder.png';
-import Link from 'next/link';
 import {Pagination} from 'antd';
 import {INewsResponse} from '@/src/api/news';
 import dayjs from 'dayjs';
 import 'dayjs/locale/ru';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {DEFAULT_PER_PAGE} from '@/src/const/filters';
 import {useAppDispatch, useAppSelector} from '@/src/hooks/redux';
 import {setArticles} from '@/src/store/newsSlice';
 import {useRouter} from 'next/navigation';
+import NewsItem from '@/src/components/NewsItem/NewsItem';
 
 dayjs.locale('ru');
 
@@ -49,17 +47,7 @@ export default function NewsList({page, newsData, lang}: IProps) {
       <ul className={s.list}>
         {allArticles?.map((item) => {
           return (
-            <li key={item.id} className={s.item}>
-              <Link href={`/news/article/${item.id}`}>
-                <div className={s.imageWrapper}>
-                  <Image className={s.image} src={item.image_big || placeholder} fill alt='Изображение новости'/>
-                </div>
-                <div className={s.infoWrapper}>
-                  <span>{dayjs(item.creation_date).format('DD MMMM YYYY')}</span>
-                  <p>{item.title}</p>
-                </div>
-              </Link>
-            </li>
+            <NewsItem key={item.id} article={item} lang={lang}/>
           )
         })}
       </ul>
