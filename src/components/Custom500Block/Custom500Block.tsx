@@ -7,7 +7,7 @@ export default function Custom500Block() {
       <div className={s.innerWrapper}>
         <h2>Ошибка 500</h2>
         <h3>Что-то пошло не так</h3>
-        <Link className={s.link} href={''}>На главную</Link>
+        <Link className={s.link} href={'/'}>На главную</Link>
       </div>
     </div>
   );
