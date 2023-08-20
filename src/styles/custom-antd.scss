@@ -8,18 +8,22 @@
 }
 
 .ant-pagination-item-link-icon {
-  color: var(--basic-purple) !important;
+  color: $basic-purple !important;
 }
 
 .ant-pagination-item-ellipsis {
-  color: rgba(var(--basic-black), 0.2) !important;
+  color: rgba(0, 0, 0, 0.2) !important;
 }
 
 .ant-pagination-item-active {
   border: none !important;
-  background: var(--basic-purple) !important;
+  background: $basic-purple !important;
 
   a {
     color: #ffffff !important;
   }
+}
+
+.ant-select-item-option-selected {
+  background: $basic-purple !important;
 }

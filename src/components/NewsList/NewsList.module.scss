@@ -8,19 +8,24 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin-bottom: 30px;
+
+  @media (max-width: var(--tablet-width)) {
+    outline: 1px solid red;
+  }
 }
 
 .item {
   border-radius: 16px;
-  background: var(--basic-white);
-  box-shadow: var(--box-shadow);
+  background: $basic-white;
+  box-shadow: $box-shadow;
   position: relative;
   height: auto;
   overflow: hidden;
   transition: 0.25s box-shadow ease-in-out;
 
   span {
-    color: rgba(var(--basic-black), 0.6);
+    color: $basic-black;
+    opacity: 0.6;
     font-family: var(--open-sans-font);
     font-size: 12px;
     font-weight: 600;

@@ -36,8 +36,6 @@ export default function NewsList({page, newsData, lang}: IProps) {
     {skip}
   ); ---*/
 
-  const t = useTranslations('NewsPage');
-
   const dispatch = useAppDispatch();
   const router = useRouter();
 

@@ -1,0 +1,23 @@
+/*--- Colors ---*/
+$basic-white: rgba(255, 255, 255, 1);
+$basic-black: rgba(34, 34, 34, 1);
+$header-gradient: linear-gradient(90deg, #3951E7 0%, #832AB9 100%);
+$link-color: rgba(0, 17, 168, 0.70);
+$basic-purple: #832AB990;
+
+/*--- Breakpoints ---*/
+$max-width: 1100px;
+$tablet-width: 768px;
+$mobile-width: 500px;
+
+/*--- Decoration ---*/
+$box-shadow: 0 0 16px 0px rgba(0, 0, 0, 0.16);
+$shadow-image: rgba(212, 214, 215, 0.15);
+
+@mixin container {
+  width: 100%;
+  max-width: var(--max-width);
+  padding-left: 16px;
+  padding-right: 16px;
+  margin: 0 auto;
+}

@@ -45,7 +45,7 @@
   justify-content: space-between;
 
   span {
-    color: rgba(var(--basic-black), 0.6);
+    color: rgba($basic-black, 0.6);
     font-family: var(--open-sans-font);
     font-size: 16px;
     font-weight: 600;
@@ -57,8 +57,9 @@
   display: flex;
   gap: 8px;
   align-items: center;
-  color: rgba(var(--basic-black), 0.6);
+  color: inherit;
   font-size: 12px;
+  opacity: 0.7;
 }
 
 .list {
@@ -80,12 +81,12 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: var(--link-color);
+  color: $link-color;
 
   svg {
     padding-bottom: 2px;
     transform: rotate(180deg);
-    fill: var(--link-color);
+    fill: $link-color;
     transition: 0.25s transform ease-in-out;
   }
 

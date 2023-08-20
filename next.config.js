@@ -6,7 +6,7 @@ const nextConfig = {
   swcMinify: true,
   cleanDistDir: true,
   sassOptions: {
-    prependData: '@use "src/styles/mixins" as *;'
+    prependData: '@use "src/styles/mixins-variables" as *;'
   },
   images: {
     domains: ['news.itmo.ru']
