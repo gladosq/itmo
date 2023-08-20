@@ -12,7 +12,7 @@ import {useEffect} from 'react';
 import {DEFAULT_PER_PAGE} from '@/src/const/filters';
 import {useAppDispatch, useAppSelector} from '@/src/hooks/redux';
 import {setArticles} from '@/src/store/newsSlice';
-import {useRouter, useSearchParams} from 'next/navigation';
+import {useRouter} from 'next/navigation';
 import {useTranslations} from 'next-intl';
 
 dayjs.locale('ru');
@@ -46,12 +46,9 @@ export default function NewsList({page, newsData, lang}: IProps) {
   }, [newsData]);
 
   const allArticles = useAppSelector((store) => store.newsData.articles);
-  const searchParams = useSearchParams();
-  const langParam = searchParams.get('language_id');
 
   return (
     <div className={s.wrapper}>
-      {/*<button onClick={() => router.}>EN</button>*/}
       <ul className={s.list}>
         {allArticles?.map((item) => {
           return (
@@ -72,15 +69,7 @@ export default function NewsList({page, newsData, lang}: IProps) {
       <div className={s.paginationWrapper}>
         <Pagination
           current={Number(page)}
-          onChange={(e) => {
-            // if (langParam) {
-            //   router.push(`${lang}/news`);
-            // } else {
-            //   router.push(`/news/${e}`);
-            // }
-
-            router.push(`/${lang}/news/${e}`);
-          }}
+          onChange={(e) => router.push(`/${lang}/news/${e}`)}
           total={newsData.total}
           showSizeChanger={false}
           pageSize={DEFAULT_PER_PAGE}

@@ -1,5 +1,7 @@
 {
   "NewsPage": {
-    "title": "News and events"
+    "title": "News and events",
+    "originalArticle": "View the original article",
+    "navigateBackButton": "Go back to the list"
   }
 }

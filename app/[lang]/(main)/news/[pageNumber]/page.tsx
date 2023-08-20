@@ -11,8 +11,6 @@ async function getData(params: INewsParams) {
     `https://news.itmo.ru/api/news/list/?ver=${API_VERSION}&${objToQueryString(params)}`
   );
 
-  console.log('res ZAPROSIK USHEL:', res);
-
   if (!res.ok) {
     throw new Error('Ошибка загрузки данных');
   }
@@ -28,6 +26,7 @@ export default async function Page(props: {params: {lang: string, pageNumber: nu
     page: pageNumber,
     per_page: DEFAULT_PER_PAGE
   };
+
   const newsData = await getData(queryParams);
 
   return (

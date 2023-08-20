@@ -1,10 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {IArticle} from '@/src/types/articles';
-import {DEFAULT_LOCALE} from '@/src/const/filters';
 
 interface INewsProps {
   articles: IArticle[];
-  locale: number;
 }
 
 const initialState: INewsProps = {
@@ -29,8 +27,7 @@ const initialState: INewsProps = {
     title: '',
     url: '',
     view_count: 0
-  }],
-  locale: DEFAULT_LOCALE
+  }]
 };
 
 const newsSlice = createSlice({
@@ -39,12 +36,9 @@ const newsSlice = createSlice({
   reducers: {
     setArticles(state, action) {
       state.articles = action.payload;
-    },
-    setLocale(state, action) {
-      state.locale = action.payload;
     }
   },
 });
 
-export const {setArticles, setLocale} = newsSlice.actions;
+export const {setArticles} = newsSlice.actions;
 export default newsSlice.reducer;

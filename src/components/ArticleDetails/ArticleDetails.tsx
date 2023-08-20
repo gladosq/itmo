@@ -1,8 +1,6 @@
 'use client';
 
 import s from './ArticleDetails.module.scss';
-// import Image from 'next/image';
-import placeholder from '../../../public/images/placeholder.png';
 import Link from 'next/link';
 import ArrowIcon from '@/src/components/UI/Icons/ArrowIcon';
 import {IArticle} from '@/src/types/articles';
@@ -10,6 +8,7 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/ru';
 import EyeIcon from '@/src/components/UI/Icons/EyeIcon';
 import {Image} from 'antd';
+import {useTranslations} from 'next-intl';
 
 dayjs.locale('ru');
 
@@ -18,16 +17,15 @@ interface IProps {
 }
 
 export default function ArticleDetails({article}: IProps) {
+  const t = useTranslations('NewsPage');
 
   return (
     <div className={s.wrapper}>
       <div className={s.innerWrapper}>
         <div className={s.imageWrapper}>
-          {/*<Image className={s.image} src={article.image_big || placeholder} fill alt='Изображение новости'/>*/}
           <Image
             className={s.image}
             src={article.image_big}
-            // placeholder={<PreloaderImage height={400}/>}
             preview={{
               mask: <span className={s.previewText}>Просмотр</span>
             }}
@@ -62,7 +60,7 @@ export default function ArticleDetails({article}: IProps) {
             </li>
           </ul>
           <Link className={s.link} href={article.url} target='_blank'>
-            Смотреть оригинальную статью
+            {t('originalArticle')}
             <ArrowIcon/>
           </Link>
         </div>

@@ -4,7 +4,7 @@ import type {Metadata} from 'next';
 import localFont from 'next/font/local';
 import React from 'react';
 import ClientProvider from '@/src/components/ClientProvider';
-import {NextIntlClientProvider, useLocale} from 'next-intl';
+import {NextIntlClientProvider} from 'next-intl';
 
 const OpenSans = localFont({
   src: [
@@ -41,7 +41,6 @@ async function getMessages(locale: string) {
   }
 }
 
-
 export function generateStaticParams() {
   return [{lang: 'ru'}, {lang: 'en'}, {lang: 'ch'}];
 }
@@ -51,8 +50,6 @@ export default async function RootLayout(
 ) {
 
   let dictionary = await getMessages(params.lang);
-
-  // const locale = useLocale();
 
   return (
     <html lang={params.lang} className={`${OpenSans.variable} ${Montserrat.variable}`}>

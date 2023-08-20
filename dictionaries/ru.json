@@ -1,5 +1,7 @@
 {
   "NewsPage": {
-    "title": "Новости и события"
+    "title": "Новости и события",
+    "originalArticle": "Смотреть оригинальную статью",
+    "navigateBackButton": "Вернуться к списку"
   }
 }

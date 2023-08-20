@@ -1,5 +1,7 @@
 {
   "NewsPage": {
-    "title": "新闻及活动"
+    "title": "新闻及活动",
+    "originalArticle": "查看原文",
+    "navigateBackButton": "返回列表"
   }
 }

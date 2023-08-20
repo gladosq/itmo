@@ -4,19 +4,14 @@ import s from './Header.module.scss';
 import Logo from '@/src/components/UI/Logo';
 import {Select} from 'antd';
 import {dataLocale} from '@/src/locale/data';
-import {useAppDispatch, useAppSelector} from '@/src/hooks/redux';
-import {setLocale} from '@/src/store/newsSlice';
-import {DEFAULT_FIRST_PAGE, DEFAULT_LOCALE} from '@/src/const/filters';
-import {useParams, useRouter, useSearchParams} from 'next/navigation';
-import Link from 'next/link';
+import {DEFAULT_LOCALE} from '@/src/const/filters';
+import {useRouter} from 'next/navigation';
+import Link from 'next-intl/link';
 
 export default function Header({lang}: { lang: string }) {
-  const dispatch = useAppDispatch();
   const router = useRouter();
 
-  const searchParams = useSearchParams();
-  const langQuery = searchParams.get('language_id');
-
+  const currentPageLocale = dataLocale.filter((item) => item.route === lang);
   const localeLabels = dataLocale.map((item) => {
       return {
         value: item.value,
@@ -26,23 +21,21 @@ export default function Header({lang}: { lang: string }) {
   );
 
   const handleChange = (value: string) => {
-    dispatch(setLocale(value));
     const currentLocale = dataLocale.filter((item) => item.value === value);
-    router.push(`/${currentLocale[0].route}/news/1`);
+    router.push(`/${currentLocale[0].route}/news/1`, {
+      forceOptimisticNavigation: true
+    });
   };
 
   return (
     <div className={s.wrapper}>
-      <Link href={'/en'} as={'/en'}>EN_________|</Link>
-      <Link href={'/ru'} as={'/ru'}>RU_________|</Link>
-      <Link href={'/ch'}>CH_________|</Link>
       <div className={s.innerWrapper}>
-        <Link href={`/${lang}/news/1`}>
+        <Link href={'/'} locale={lang}>
           <Logo/>
         </Link>
         <Select
-          value={langQuery || DEFAULT_LOCALE.toString()}
-          defaultValue={langQuery || DEFAULT_LOCALE.toString()}
+          value={currentPageLocale[0].value || DEFAULT_LOCALE.toString()}
+          defaultValue={DEFAULT_LOCALE.toString()}
           style={{width: 100}}
           onChange={handleChange}
           options={localeLabels}

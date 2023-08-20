@@ -1,35 +1,14 @@
 .ant-select-selector {
-  background: #F2F4FF !important;
+  background: #f2f4ff !important;
   border: 0 !important;
-  //color: #ffffff !important;
 }
 
-.ant-select-arrow {
-  //color: #ffffff !important;
-}
-
-.ant-select-open {
-  //opacity: 0.4 !important;
-  //color: #ffffff !important;
-}
-
-.ant-pagination-item {
-
-  a {
-    font-family: var(--open-sans-font);
-
-  }
-
-  //&:hover {
-  //  a {
-  //    color: #832AB9 !important;
-  //  }
-  //}
-
+.ant-pagination-item a {
+  font-family: var(--open-sans-font);
 }
 
 .ant-pagination-item-link-icon {
-  color: #832AB990 !important;
+  color: var(--basic-purple) !important;
 }
 
 .ant-pagination-item-ellipsis {
@@ -38,11 +17,9 @@
 
 .ant-pagination-item-active {
   border: none !important;
-  background: #832AB990 !important;
+  background: var(--basic-purple) !important;
 
   a {
     color: #ffffff !important;
-
-
   }
 }
