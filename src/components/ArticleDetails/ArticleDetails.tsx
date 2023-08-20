@@ -11,7 +11,7 @@ import {Image} from 'antd';
 import {useTranslations} from 'next-intl';
 import {useState} from 'react';
 import errorImage from '../../../public/images/error-image.png';
-import {StaticImageData} from 'next/image';
+import PreloaderImage from '@/src/components/UI/PreloaderImage/PrealoderImage';
 
 dayjs.locale('ru');
 
@@ -21,11 +21,13 @@ interface IProps {
 }
 
 export default function ArticleDetails({article, lang}: IProps) {
-  const [src, setSrc] = useState<string>(article.image_big || errorImage.src);
-
+  const [isShowPreview, setIsShowPreview] = useState(true);
   const t = useTranslations('NewsPage');
 
-  console.log('article:', article);
+  const previewOptions = (isShow: boolean) => {
+    if (isShow) return ({mask: <span className={s.previewText}>{t('previewText')}</span>});
+    return false;
+  };
 
   return (
     <div className={s.wrapper}>
@@ -33,19 +35,18 @@ export default function ArticleDetails({article, lang}: IProps) {
         <div className={s.imageWrapper}>
           <Image
             className={s.image}
-            src={src}
-            preview={{
-              mask: <span className={s.previewText}>{t('previewText')}</span>
-            }}
+            src={article.image_big || errorImage.src}
+            preview={previewOptions(isShowPreview)}
             alt='Иллюстрация новости'
+            placeholder={<PreloaderImage height={400}/>}
             onError={(e) => {
+              setIsShowPreview(false);
               if (e.currentTarget.src !== errorImage.src) {
                 e.currentTarget.onerror = null;
                 e.currentTarget.src = errorImage.src;
               }
             }}
           />
-
         </div>
         <div className={s.infoWrapper}>
           <div className={s.dateWrapper}>

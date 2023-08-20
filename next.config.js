@@ -2,17 +2,12 @@ const withNextIntl = require('next-intl/plugin')('./i18n.ts');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false,
-  swcMinify: true,
   cleanDistDir: true,
   sassOptions: {
     prependData: '@use "src/styles/mixins-variables" as *;'
   },
   images: {
     domains: ['news.itmo.ru']
-  },
-  compiler: {
-    styledComponents: false
   }
 }
 
