@@ -13,7 +13,6 @@ import {DEFAULT_PER_PAGE} from '@/src/const/filters';
 import {useAppDispatch, useAppSelector} from '@/src/hooks/redux';
 import {setArticles} from '@/src/store/newsSlice';
 import {useRouter} from 'next/navigation';
-import {useTranslations} from 'next-intl';
 
 dayjs.locale('ru');
 

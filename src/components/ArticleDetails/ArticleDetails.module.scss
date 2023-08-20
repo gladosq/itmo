@@ -2,6 +2,10 @@
   margin-top: 60px;
   background: #f2f4f9;
   margin-bottom: 40px;
+
+  @media (max-width: $mobile-width) {
+    margin-top: 20px;
+  }
 }
 
 .backWrapper {
@@ -14,6 +18,17 @@
   padding-bottom: 60px;
   display: flex;
   gap: 40px;
+
+  @media (max-width: $lg-tablet-width) {
+    gap: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  @media (max-width: $tablet-width) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .imageWrapper {
@@ -24,6 +39,14 @@
   overflow: hidden;
   box-shadow: 0 4px 40px 0 rgba(0, 0, 0, 0.40);
   flex-shrink: 0;
+
+  @media (max-width: $lg-tablet-width) {
+    width: 340px;
+  }
+
+  @media (max-width: $mobile-width) {
+    width: auto;
+  }
 }
 
 .image {
@@ -38,6 +61,22 @@
   padding-top: 16px;
   padding-bottom: 16px;
   flex-grow: 1;
+
+  h2 {
+    font-size: 26px;
+
+    @media (max-width: $lg-tablet-width) {
+      font-size: 20px;
+    }
+
+    @media (max-width: $tablet-width) {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: $mobile-width) {
+    padding-bottom: 0;
+  }
 }
 
 .dateWrapper {
@@ -66,6 +105,10 @@
   display: flex;
   gap: 14px;
   margin-bottom: 40px;
+
+  @media (max-width: $tablet-width) {
+    justify-content: center;
+  }
 }
 
 .item {
@@ -94,5 +137,9 @@
     svg {
       transform: translate(4px) rotate(180deg);
     }
+  }
+
+  @media (max-width: $tablet-width) {
+    justify-content: flex-end;
   }
 }

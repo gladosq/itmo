@@ -1,0 +1,1 @@
+export const DEFAULT_PRELOADER_ELEMENTS = 6;

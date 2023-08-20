@@ -5,6 +5,7 @@ import {objToQueryString} from '@/src/utils/utils';
 import {INewsParams} from '@/src/api/news';
 import {DEFAULT_PER_PAGE} from '@/src/const/filters';
 import {dataLocale} from '@/src/locale/data';
+import NewsPreloader from '@/src/components/UI/NewsPreloader/NewsPreloader';
 
 async function getData(params: INewsParams) {
   const res = await fetch(
@@ -31,6 +32,7 @@ export default async function Page(props: {params: {lang: string, pageNumber: nu
 
   return (
     <>
+      {/*<NewsPreloader/>*/}
       <Subtitle/>
       <NewsList
         newsData={newsData}

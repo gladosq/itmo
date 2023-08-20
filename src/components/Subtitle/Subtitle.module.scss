@@ -4,4 +4,8 @@
   font-size: 40px;
   font-weight: 600;
   margin-bottom: 30px;
+
+  @media (max-width: $mobile-width) {
+    font-size: 28px;
+  }
 }

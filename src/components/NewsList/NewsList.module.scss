@@ -9,8 +9,13 @@
   gap: 20px;
   margin-bottom: 30px;
 
-  @media (max-width: var(--tablet-width)) {
-    outline: 1px solid red;
+  @media (max-width: $tablet-width) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $mobile-width) {
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -32,6 +37,10 @@
     text-transform: uppercase;
     margin-bottom: 18px;
     display: block;
+
+    @media (max-width: $mobile-width) {
+      margin-bottom: 10px;
+    }
   }
 
   &:hover {
@@ -59,10 +68,18 @@
     position: relative;
     object-fit: cover;
   }
+
+  @media (max-width: $mobile-width) {
+    height: 170px;
+  }
 }
 
 .infoWrapper {
   padding: 26px;
+
+  @media (max-width: $mobile-width) {
+    padding: 16px;
+  }
 }
 
 .paginationWrapper {
