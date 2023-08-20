@@ -30,7 +30,10 @@ const Montserrat = localFont({
 
 export const metadata: Metadata = {
   title: 'ITMO',
-  description: 'Университет ИТМО'
+  description: 'Университет ИТМО',
+  icons: {
+    icon: '/next.svg'
+  }
 }
 
 async function getMessages(locale: string) {
